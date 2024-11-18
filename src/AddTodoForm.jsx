@@ -1,13 +1,12 @@
-import PropTypes from 'prop-types';
 
 const AddTodoForm = ({ onAddTodo }) => {
   const handleAddTodo = (event) => {
     event.preventDefault();
-    const todoTitle = event.target.title.value.trim();
-    if (todoTitle) {
+    const todoTitle = event.target.title.value;
+    if (onAddTodo) {
       onAddTodo(todoTitle);
-      event.target.reset();
     }
+    event.target.reset();
   };
 
   return (
@@ -17,10 +16,6 @@ const AddTodoForm = ({ onAddTodo }) => {
       <button type="submit">Add</button>
     </form>
   );
-};
-
-AddTodoForm.propTypes = {
-  onAddTodo: PropTypes.func.isRequired,
 };
 
 export default AddTodoForm;
